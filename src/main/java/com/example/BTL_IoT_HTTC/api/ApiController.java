@@ -26,14 +26,17 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
  * @author dovan
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class ApiController {
@@ -237,6 +240,18 @@ public class ApiController {
         } catch (Exception e) {
             System.out.println(e);
             System.out.println("Loi cap nhat thoi gian hen gio!");
+        }
+        return false;
+    }
+    
+    @DeleteMapping("/del-timer")
+    public boolean deleteTimer(@RequestParam int id){
+        try {
+            clockRepository.deleteById(id);
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+            System.out.println("Loi xoa hen gio tuoi cay!");
         }
         return false;
     }

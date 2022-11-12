@@ -7,6 +7,7 @@ package com.example.BTL_IoT_HTTC.dao;
 
 import com.example.BTL_IoT_HTTC.model.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,5 +16,6 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public interface AccountRepository extends JpaRepository<Account, Integer>{
-    
+    @Query(value = "SELECT * FROM account WHERE username = ?1", nativeQuery = true)
+    public Account findAccountByUsername(String username);
 }
