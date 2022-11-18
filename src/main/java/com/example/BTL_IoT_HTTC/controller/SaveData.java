@@ -108,7 +108,7 @@ public class SaveData {
                 long now = System.currentTimeMillis();
                 Time timeNow = new Time(now);
                 Date dayNow = new Date(now);
-                if (c.isRepeats() || c.getDay() == dayNow) {
+                if (c.isRepeats() || c.getDay().toString().equals(dayNow.toString())) {
                     if (c.getHour().getHours() == timeNow.getHours() && c.getHour().getMinutes()== timeNow.getMinutes()) {
                         Parameter parameter = parameterRepository.findByAccountAndName(c.getAccount().getId(), "Sensor.Parameter3");
                         List<Para> lPr = new ArrayList<>();
